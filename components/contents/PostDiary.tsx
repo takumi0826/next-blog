@@ -1,23 +1,49 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Moment from 'react-moment'
+import { motion } from 'framer-motion'
 
 const PostDiary = ({ items }) => {
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.1,
+        staggerChildren: 0.2,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  }
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-[64px]">
-      {items.map(({ id, title, updatedAt, link, image }) => {
+    <motion.div
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-[64px]"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
+      {items.map(({ id, title, updatedAt, link, image }, i) => {
         return (
-          <Link href={link}>
-            <a
-              key={id}
-              className="col-auto rounded-3xl shadow-md bg-white hover:shadow-xl transition duration-300 hover:-translate-y-2"
+          <Link href={`diary/${id}`}>
+            <motion.a
+              key={i}
+              variants={item}
+              className="col-auto rounded-3xl shadow-md bg-white hover:shadow-xl transition duration-300 hover:-translate-y-2 overflow-hidden"
             >
               <Image
                 src={image.url}
                 width={560}
                 height={480}
                 objectFit={'cover'}
-                className="rounded-tl-3xl rounded-tr-3xl align-bottom"
+                className="rounded-tl-3xl rounded-tr-3xl align-bottom hover:scale-[1.1] duration-300"
               />
               <div className="px-[16px] pt-[8px] pb-[32px]">
                 <div className="flex items-center justify-end">
@@ -35,11 +61,11 @@ const PostDiary = ({ items }) => {
                 </div>
                 <p>{title}</p>
               </div>
-            </a>
+            </motion.a>
           </Link>
         )
       })}
-    </div>
+    </motion.div>
   )
 }
 

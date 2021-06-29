@@ -9,8 +9,8 @@ module.exports = {
           default: '#1b1c1d',
         },
         primary: {
-          100: '#E9FDFF',
-          500: '#00A8D2',
+          100: '#E0F2ED',
+          500: '#458E7D',
           700: '#057586',
         },
         gray: {

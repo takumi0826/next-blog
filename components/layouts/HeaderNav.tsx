@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const HeaderNav = ({ navs }) => {
   return (
-    <ul className="flex justify-center items-center w-[240px] rounded-full bg-primary-700">
+    <ul className="hidden sm:flex justify-center items-center w-[240px] rounded-full bg-primary-700">
       {navs.map(({ id, title, url }) => {
         return (
           <li className="px-[16px]" key={id}>

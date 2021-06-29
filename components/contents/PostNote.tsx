@@ -1,16 +1,43 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Moment from 'react-moment'
+import { motion } from 'framer-motion'
 
 const PostNote = ({ items }) => {
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.1,
+        staggerChildren: 0.2,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  }
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-[64px]">
-      {items.map(({ id, title, updatedAt, category }) => {
+    <motion.div
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-[64px]"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
+      {items.map(({ id, title, updatedAt, category }, i) => {
         return (
           <Link href={`note/${id}`}>
-            <a
-              key={id}
-              className="max-w-[340px] p-[16px] col-auto rounded-3xl shadow-md hover:bg-primary-100 hover:shadow-xl transition duration-300 hover:-translate-y-2"
+            <motion.a
+              key={i}
+              variants={item}
+              whileHover={{ scale: 1.05 }}
+              className="w-full max-w-[340px] mx-auto p-[16px] col-auto rounded-3xl shadow-md hover:bg-primary-100 hover:shadow-xl transition duration-300"
             >
               <div className="flex items-center justify-end">
                 <div className="mr-1">
@@ -25,10 +52,10 @@ const PostNote = ({ items }) => {
                   {updatedAt}
                 </Moment>
               </div>
-              <h2 className="font-bold pb-[16px] border-b border-gray-200">
+              <h2 className="font-bold pb-[16px] border-b border-gray-200 truncate">
                 {title}
               </h2>
-              <div className="flex mt-[8px] mr-[8px]">
+              <div className="flex mt-[8px]">
                 {category.map((item) => {
                   return (
                     <div className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2">
@@ -37,11 +64,11 @@ const PostNote = ({ items }) => {
                   )
                 })}
               </div>
-            </a>
+            </motion.a>
           </Link>
         )
       })}
-    </div>
+    </motion.div>
   )
 }
 
