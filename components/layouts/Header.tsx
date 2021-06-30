@@ -15,10 +15,10 @@ const Header = () => {
       <div className="flex items-center justify-between">
         <Link href="/">
           <Image
-            src={'/images/vercel.svg'}
+            src={'/images/logo.png'}
             alt="Picture of the author"
-            width={141}
-            height={32}
+            width={120}
+            height={41}
           />
         </Link>
         <HeaderNav navs={navs} />

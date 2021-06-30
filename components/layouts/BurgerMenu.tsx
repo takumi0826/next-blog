@@ -9,13 +9,16 @@ const BurgerMenu = ({ navs, open, toggle }) => {
       <ul className="">
         {navs.map(({ title, id, url }) => {
           return (
-            <Link href={url} key={id}>
-              <a onClick={toggle}>
-                <li className="text-xl text-primary-100 py-[16px] tracking-widest">
+            <li key={id} className="opacity-90 hover:opacity-100">
+              <Link href={url}>
+                <a
+                  onClick={toggle}
+                  className="py-[16px] block text-xl text-primary-100 tracking-widest"
+                >
                   {title}
-                </li>
-              </a>
-            </Link>
+                </a>
+              </Link>
+            </li>
           )
         })}
       </ul>

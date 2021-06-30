@@ -1,10 +1,13 @@
 import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
-import Head from 'next/head'
 import { Layout } from '../components/layouts'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect, useState } from 'react'
 import { Header, Footer } from '../components/layouts'
+import { GA_TRACKING_ID, pageview } from '../library/gtag'
+import { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+
 function MyApp({ Component, pageProps, router }) {
   const container = {
     hidden: { y: 0 },
@@ -16,16 +19,20 @@ function MyApp({ Component, pageProps, router }) {
       },
     },
   }
+  useEffect(() => {
+    if (!GA_TRACKING_ID) return
+    const handleRouteChange = (url: string) => {
+      pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
   switch (pageProps.layout) {
     case 'home': {
       return (
         <>
-          <Head>
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
-            />
-          </Head>
           <Header />
           <motion.div
             key={router.route}
@@ -48,12 +55,6 @@ function MyApp({ Component, pageProps, router }) {
     default: {
       return (
         <>
-          <Head>
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
-            />
-          </Head>
           <motion.div
             key={router.route}
             className="w-[100vw] h-[100vh] from-blue-600 via-teal-500 to-purple-500 bg-gradient-to-tl fixed left-0 top-0 z-40"

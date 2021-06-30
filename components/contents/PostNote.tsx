@@ -25,7 +25,7 @@ const PostNote = ({ items }) => {
   }
   return (
     <motion.div
-      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-[64px]"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-[64px]"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -37,7 +37,7 @@ const PostNote = ({ items }) => {
               key={i}
               variants={item}
               whileHover={{ scale: 1.05 }}
-              className="w-full max-w-[340px] mx-auto p-[16px] col-auto rounded-3xl shadow-md hover:bg-primary-100 hover:shadow-xl transition duration-300"
+              className="w-full max-w-[340px] mx-auto p-[16px] col-auto rounded-3xl shadow-md hover:bg-primary-100 hover:bg-opacity-30 hover:shadow-xl transition duration-300"
             >
               <div className="flex items-center justify-end">
                 <div className="mr-1">
