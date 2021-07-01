@@ -3,10 +3,10 @@ import 'tailwindcss/tailwind.css'
 import { Layout } from '../components/layouts'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Header, Footer } from '../components/layouts'
-import { GA_TRACKING_ID, pageview } from '../library/gtag'
-import { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+// import { GA_TRACKING_ID, pageview } from '../library/gtag'
+// import { AppProps } from 'next/app'
+// import { useRouter } from 'next/router'
+// import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps, router }) {
   const container = {
@@ -19,16 +19,16 @@ function MyApp({ Component, pageProps, router }) {
       },
     },
   }
-  useEffect(() => {
-    if (!GA_TRACKING_ID) return
-    const handleRouteChange = (url: string) => {
-      pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+  // useEffect(() => {
+  //   if (!GA_TRACKING_ID) return
+  //   const handleRouteChange = (url: string) => {
+  //     pageview(url)
+  //   }
+  //   router.events.on('routeChangeComplete', handleRouteChange)
+  //   return () => {
+  //     router.events.off('routeChangeComplete', handleRouteChange)
+  //   }
+  // }, [router.events])
   switch (pageProps.layout) {
     case 'home': {
       return (

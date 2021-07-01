@@ -1,5 +1,5 @@
 // pages/_document.tsx
-import { GA_TRACKING_ID } from '../library/gtag'
+// import { GA_TRACKING_ID } from '../library/gtag'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
           />
-          {GA_TRACKING_ID && (
+          {/* {GA_TRACKING_ID && (
             <>
               <script
                 async
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
                 }}
               />
             </>
-          )}
+          )} */}
         </Head>
         <body>
           <Main />
