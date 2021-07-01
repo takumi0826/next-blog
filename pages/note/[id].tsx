@@ -22,8 +22,8 @@ export async function getStaticPaths() {
     },
   })
     .then((response) => response.json())
-    .catch(() => null)
-  const paths = res.contents.map(({ id }) => `/note/${id}`)
+    .catch(() => [])
+  const paths = (res.contents || []).map(({ id }) => `/note/${id}`)
   return { paths, fallback: false }
 }
 
