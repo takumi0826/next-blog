@@ -26,7 +26,7 @@ export const getStaticProps = async () => {
     }
   }
   return {
-    props: { diary: resDiary.contents },
+    props: { diary: resDiary.contents || null },
   }
 }
 

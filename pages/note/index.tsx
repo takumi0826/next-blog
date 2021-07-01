@@ -24,7 +24,7 @@ export const getStaticProps = async () => {
     }
   }
   return {
-    props: { note: resNote.contents },
+    props: { note: resNote.contents || null },
   }
 }
 
