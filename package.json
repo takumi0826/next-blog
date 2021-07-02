@@ -10,6 +10,7 @@
   "dependencies": {
     "contentful": "^8.4.2",
     "framer-motion": "^4.1.17",
+    "microcms-js-sdk": "^1.2.0",
     "moment": "^2.29.1",
     "next": "11.0.0",
     "react": "17.0.2",

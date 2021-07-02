@@ -11,12 +11,19 @@
 
 @layer utilities {
   .detail > h2 {
-    @apply text-xl mb-[8px] mt-[32px];
+    @apply text-xl mb-[.5rem] mt-[2rem];
   }
   .detail pre {
-    @apply p-[16px] bg-gray-800 rounded-md w-full max-w-[640px] overflow-x-scroll;
+    @apply p-[1rem] bg-gray-800 rounded-md w-full max-w-[640px] overflow-x-scroll;
   }
   .detail code {
     @apply text-white text-sm;
+  }
+  .detail > p,
+  ul {
+    @apply my-[1.5rem] !important;
+  }
+  .detail ul > li {
+    @apply my-[1rem];
   }
 }

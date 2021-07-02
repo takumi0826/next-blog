@@ -17,8 +17,8 @@ const Header = () => {
           <Image
             src={'/images/logo.png'}
             alt="Picture of the author"
-            width={120}
-            height={41}
+            width={60}
+            height={57}
           />
         </Link>
         <HeaderNav navs={navs} />

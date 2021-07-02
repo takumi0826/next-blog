@@ -18,7 +18,7 @@ export default function Note({ data }) {
 export async function getStaticPaths() {
   const res = await fetch('https://microblog.microcms.io/api/v1/note/', {
     headers: {
-      'X-API-KEY': process.env.API_KEY,
+      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
     },
   })
     .then((response) => response.json())
@@ -32,7 +32,7 @@ export async function getStaticProps({ params }) {
   const id = params.id
   const res = await fetch(`https://microblog.microcms.io/api/v1/note/${id}`, {
     headers: {
-      'X-API-KEY': process.env.API_KEY,
+      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
     },
   })
     .then((response) => response.json())

@@ -34,7 +34,7 @@ const getDiaryPosts = async () => {
   const url = 'https://microblog.microcms.io/api/v1/diary'
   const res = await fetch(url, {
     headers: {
-      'X-API-KEY': process.env.API_KEY,
+      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
     },
   })
   const resData = res.json()
