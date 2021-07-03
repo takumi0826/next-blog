@@ -9,7 +9,7 @@ export default function Note({ data }) {
       </Head>
       <div className="max-w-lg mx-auto">
         <PostTitle1 data={data} />
-        {DetailNote && <DetailNote data={data} />}
+        {DetailNote && <DetailNote data={data || null} />}
       </div>
     </>
   )
@@ -23,7 +23,7 @@ export async function getStaticPaths() {
   })
     .then((response) => response.json())
     .catch(() => [])
-  const paths = (res.contents || []).map(({ id }) => `/note/${id}`)
+  const paths = res.contents.map(({ id }) => `/note/${id}`)
   return { paths, fallback: false }
 }
 

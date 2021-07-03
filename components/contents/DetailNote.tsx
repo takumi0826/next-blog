@@ -2,7 +2,7 @@ const DetailNote = ({ data }) => {
   return (
     <>
       <div
-        className="detail"
+        className="markdown"
         dangerouslySetInnerHTML={{
           __html: data.body,
         }}
