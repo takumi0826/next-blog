@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { PostTitle1, DetailDiary } from '../../components/contents'
+import { PostTitle1, DetailDiary } from 'components/contents'
 
 export default function Diary({ data }) {
   return (
@@ -7,7 +7,7 @@ export default function Diary({ data }) {
       <Head>
         <title>{data.title}</title>
       </Head>
-      <div className="max-w-lg mx-auto">
+      <div className="">
         <PostTitle1 data={data} />
         {DetailDiary && <DetailDiary data={data} />}
       </div>

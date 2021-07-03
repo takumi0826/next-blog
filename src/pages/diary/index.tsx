@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { HeadTitle2, PostDiary } from '../../components/contents'
+import { HeadTitle2, PostDiary } from 'components/contents'
 export default function Diary({ diary }) {
   return (
     <>
@@ -10,7 +10,7 @@ export default function Diary({ diary }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="">
-        <PostDiary items={diary} />
+        <PostDiary key={diary} items={diary} />
       </div>
     </>
   )

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
-import { ContactForm } from '../../components/contents'
+import { ContactForm } from 'components/contents'
 export default function Contact() {
   return (
     <>

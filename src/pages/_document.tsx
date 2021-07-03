@@ -1,5 +1,5 @@
 // pages/_document.tsx
-// import { GA_TRACKING_ID } from '../library/gtag'
+// import { GA_TRACKING_ID } from 'lib/gtag'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {

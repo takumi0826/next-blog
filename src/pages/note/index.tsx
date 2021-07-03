@@ -1,6 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { HeadTitle2, PostNote } from '../../components/contents'
+import { HeadTitle2, PostNote } from 'components/contents'
+import { NoteArray } from 'types'
+
+// type noteProps = {
+//   note: NoteArray[]
+// }
+
 export default function Note({ note }) {
   return (
     <>
@@ -8,7 +14,7 @@ export default function Note({ note }) {
         <title>Note</title>
       </Head>
       <div className="">
-        <PostNote items={note} />
+        <PostNote key={note} items={note} />
       </div>
     </>
   )

@@ -30,11 +30,11 @@ const PostDiary = ({ items }) => {
       initial="hidden"
       animate="visible"
     >
-      {items.map(({ id, title, updatedAt, link, image }, i) => {
+      {items.map(({ id, title, updatedAt, image }) => {
         return (
-          <Link href={`diary/${id}`}>
+          <Link key={id} href={`diary/${id}`}>
             <motion.a
-              key={i}
+              key={id}
               variants={item}
               className="col-auto rounded-3xl shadow-md bg-white hover:shadow-xl transition duration-300 hover:-translate-y-2 overflow-hidden"
             >
@@ -49,7 +49,7 @@ const PostDiary = ({ items }) => {
                 <div className="flex items-center justify-end">
                   <div className="mr-1">
                     <Image
-                      src={'/images/icon-time.svg'}
+                      src={'/icon-time.svg'}
                       alt={'Picture of the author'}
                       width={12}
                       height={12}

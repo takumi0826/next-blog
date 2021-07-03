@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { PostTitle1, DetailNote } from '../../components/contents'
+import { PostTitle1, DetailNote } from 'components/contents'
 
 export default function Note({ data }) {
   return (
@@ -7,9 +7,9 @@ export default function Note({ data }) {
       <Head>
         <title>{data.title}</title>
       </Head>
-      <div className="max-w-lg mx-auto">
+      <div className="">
         <PostTitle1 data={data} />
-        {DetailNote && <DetailNote data={data || null} />}
+        {DetailNote && <DetailNote data={data} />}
       </div>
     </>
   )
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
     },
   })
     .then((response) => response.json())
-    .catch(() => [])
+    .catch(() => null)
   const paths = res.contents.map(({ id }) => `/note/${id}`)
   return { paths, fallback: false }
 }

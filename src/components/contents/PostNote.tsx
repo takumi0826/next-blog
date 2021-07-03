@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const PostNote = ({ items }) => {
   const container = {
-    hidden: { opacity: 1, scale: 0 },
+    hidden: { opacity: 0, scale: 0 },
     visible: {
       opacity: 1,
       scale: 1,
@@ -30,11 +30,11 @@ const PostNote = ({ items }) => {
       initial="hidden"
       animate="visible"
     >
-      {items.map(({ id, title, updatedAt, category }, i) => {
+      {items.map(({ id, title, updatedAt, category }) => {
         return (
-          <Link href={`note/${id}`}>
+          <Link key={id} href={`note/${id}`}>
             <motion.a
-              key={i}
+              key={id}
               variants={item}
               whileHover={{ scale: 1.05 }}
               className="w-full max-w-[340px] mx-auto p-[16px] col-auto rounded-3xl shadow-md hover:bg-primary-100 hover:bg-opacity-30 hover:shadow-xl transition duration-300"
@@ -42,7 +42,7 @@ const PostNote = ({ items }) => {
               <div className="flex items-center justify-end">
                 <div className="mr-1">
                   <Image
-                    src={'/images/icon-time.svg'}
+                    src={'/icon-time.svg'}
                     alt={'Picture of the author'}
                     width={12}
                     height={12}
@@ -58,7 +58,10 @@ const PostNote = ({ items }) => {
               <div className="flex mt-[8px]">
                 {category.map((item) => {
                   return (
-                    <div className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2">
+                    <div
+                      key={item}
+                      className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2"
+                    >
                       {item}
                     </div>
                   )

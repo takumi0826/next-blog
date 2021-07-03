@@ -11,5 +11,6 @@ export type NoteArray = {
   id: string
   title: string
   body: string
+  link: string
   category: [string]
 }
