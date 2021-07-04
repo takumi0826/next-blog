@@ -23,7 +23,7 @@
 /* Headers */
 .markdown h1,
 .markdown h2 {
-  @apply text-xl my-[40px];
+  @apply text-xl mt-[2.5rem] mb-[1rem];
 }
 .markdown h3,
 .markdown h4,
@@ -54,7 +54,7 @@
 
 /* Paragraph */
 .markdown p {
-  @apply mb-4 leading-8 md:leading-10 text-justify;
+  @apply my-4 leading-8 md:leading-10 text-justify;
 }
 
 /* Lists */
@@ -82,16 +82,11 @@
   @apply mb-0;
 }
 
-/* Images */
-.markdown img {
-  @apply shadow-lg;
-}
-
 .markdown pre > code {
   @apply text-white text-sm;
 }
 
 /* Pre */
 .markdown pre {
-  @apply p-[1rem] bg-gray-800 rounded-md w-full max-w-[640px] overflow-x-scroll mt-[-24px];
+  @apply p-[1rem] bg-gray-800 rounded-md w-full max-w-[640px] overflow-x-scroll;
 }
