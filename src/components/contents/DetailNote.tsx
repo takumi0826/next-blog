@@ -8,7 +8,7 @@ const DetailNote = ({ data }) => {
         }}
       />
     </>
-  )
-}
+  );
+};
 
-export default DetailNote
+export default DetailNote;

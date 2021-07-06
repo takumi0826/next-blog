@@ -59,7 +59,7 @@ const PostDiary = ({ items }) => {
                     {updatedAt}
                   </Moment>
                 </div>
-                <p>{title}</p>
+                <p className="truncate">{title}</p>
               </div>
             </motion.a>
           </Link>
