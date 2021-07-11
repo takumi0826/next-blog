@@ -1,12 +1,7 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import { Header, Footer } from 'components/layouts'
-import {
-  HeadTitle2,
-  PostNote,
-  PostDiary,
-  MainVisual,
-} from 'components/contents'
+import { HeadTitle2, PostNote, PostDiary, MainVisual } from 'components/contents'
 
 export default function Home({ note, diary }) {
   return (

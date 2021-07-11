@@ -6,7 +6,7 @@ const Header = () => {
   const navs = [
     { id: 1, title: 'Diary', url: '/diary' },
     { id: 2, title: 'Note', url: '/note' },
-    { id: 3, title: 'Contact', url: '/contact' },
+    { id: 3, title: 'Profile', url: '/profile' },
   ]
   const [open, setOpen] = useState(false)
 
@@ -14,12 +14,7 @@ const Header = () => {
     <header className="w-full top-[24px] fixed px-[24px] z-50">
       <div className="flex items-center justify-between">
         <Link href="/">
-          <Image
-            src={'/logo.png'}
-            alt="Picture of the author"
-            width={60}
-            height={57}
-          />
+          <Image src={'/logo.png'} alt="Picture of the author" width={60} height={57} />
         </Link>
         <HeaderNav navs={navs} />
         <BurgerButton open={open} toggle={() => setOpen(!open)} />

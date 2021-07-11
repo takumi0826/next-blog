@@ -37,6 +37,7 @@ const PostNote = ({ items }) => {
               key={id}
               variants={item}
               whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="w-full max-w-[340px] mx-auto p-[16px] col-auto rounded-3xl shadow-md hover:bg-primary-100 hover:bg-opacity-30 hover:shadow-xl transition duration-300"
             >
               <div className="flex items-center justify-end">
@@ -52,9 +53,7 @@ const PostNote = ({ items }) => {
                   {updatedAt}
                 </Moment>
               </div>
-              <h2 className="font-bold pb-[16px] border-b border-gray-200 truncate">
-                {title}
-              </h2>
+              <h2 className="font-bold pb-[16px] border-b border-gray-200 truncate">{title}</h2>
               <div className="flex mt-[8px]">
                 {category.map((item) => {
                   return (
