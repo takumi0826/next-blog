@@ -1,20 +1,21 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { HeadTitle2, PostNote } from 'components/contents'
-import { NoteArray } from 'types'
+import { NoteProps } from 'types'
+import { NextPage } from 'next'
 
-// type noteProps = {
-//   note: NoteArray[]
-// }
+type Props = {
+  note: NoteProps[]
+}
 
-export default function Note({ note }) {
+const Note: NextPage<Props> = ({ note }) => {
   return (
     <>
       <Head>
         <title>Note</title>
       </Head>
       <div className="">
-        <PostNote key={note} items={note} />
+        <PostNote note={note} />
       </div>
     </>
   )
@@ -45,3 +46,5 @@ const getNotePosts = async () => {
     .catch(() => null)
   return res
 }
+
+export default Note

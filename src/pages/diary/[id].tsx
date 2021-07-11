@@ -1,7 +1,13 @@
 import Head from 'next/head'
 import { PostTitle1, DetailDiary } from 'components/contents'
+import { NextPage } from 'next'
+import { DiaryProps } from 'types'
 
-export default function Diary({ data }) {
+type Props = {
+  data: DiaryProps
+}
+
+const DiaryArticle: NextPage<Props> = ({ data }) => {
   return (
     <>
       <Head>
@@ -40,3 +46,5 @@ export async function getStaticProps({ params }) {
 
   return { props: { data: res } }
 }
+
+export default DiaryArticle

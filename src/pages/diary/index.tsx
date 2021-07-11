@@ -1,7 +1,13 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import { NextPage } from 'next'
 import { HeadTitle2, PostDiary } from 'components/contents'
-export default function Diary({ diary }) {
+import { DiaryProps } from 'types'
+
+type Props = {
+  diary: DiaryProps[]
+}
+
+const Diary: NextPage<Props> = ({ diary }) => {
   return (
     <>
       <Head>
@@ -10,7 +16,7 @@ export default function Diary({ diary }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="">
-        <PostDiary key={diary} items={diary} />
+        <PostDiary diary={diary} />
       </div>
     </>
   )
@@ -40,3 +46,5 @@ const getDiaryPosts = async () => {
   const resData = res.json()
   return resData
 }
+
+export default Diary

@@ -1,7 +1,13 @@
 import Head from 'next/head'
 import { PostTitle1, DetailNote } from 'components/contents'
+import { NextPage } from 'next'
+import { NoteProps } from 'types'
 
-export default function Note({ data }) {
+type Props = {
+  data: NoteProps
+}
+
+const NoteArticle: NextPage<Props> = ({ data }) => {
   return (
     <>
       <Head>
@@ -40,3 +46,5 @@ export async function getStaticProps({ params }) {
 
   return { props: { data: res } }
 }
+
+export default NoteArticle

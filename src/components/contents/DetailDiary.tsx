@@ -1,4 +1,10 @@
-const DetailDiary = ({ data }) => {
+import { DiaryProps } from 'types'
+
+type Props = {
+  data: DiaryProps
+}
+
+const DetailDiary: React.FC<Props> = ({ data }) => {
   return (
     <>
       <div

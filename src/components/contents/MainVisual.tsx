@@ -1,12 +1,15 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
-const MainVisual = ({ src }) => {
+type Props = {
+  src: string
+}
+const MainVisual: React.FC<Props> = ({ src }) => {
   return (
     <>
       <div className="h-[100vh] w-[100vw]">
         <Image className="align-top" src={src} alt="main" layout={'fill'} objectFit={'cover'} />
       </div>
     </>
-  );
-};
-export default MainVisual;
+  )
+}
+export default MainVisual

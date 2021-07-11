@@ -2,8 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Moment from 'react-moment'
 import { motion } from 'framer-motion'
+import { NoteProps } from 'types'
 
-const PostNote = ({ items }) => {
+type Props = {
+  note: NoteProps[]
+}
+
+const PostNote: React.FC<Props> = ({ note }) => {
   const container = {
     hidden: { opacity: 0, scale: 0 },
     visible: {
@@ -30,7 +35,7 @@ const PostNote = ({ items }) => {
       initial="hidden"
       animate="visible"
     >
-      {items.map(({ id, title, updatedAt, category }) => {
+      {note.map(({ id, title, updatedAt, category }) => {
         return (
           <Link key={id} href={`note/${id}`}>
             <motion.a

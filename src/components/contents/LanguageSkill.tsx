@@ -2,7 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 import { HeadTitle2 } from 'components/contents'
 import { motion } from 'framer-motion'
-const LanguageSkill = (skills) => {
+import { SkillProps } from 'types'
+
+type Props = {
+  skills: SkillProps[]
+}
+
+const LanguageSkill: React.FC<Props> = ({ skills }) => {
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,7 +39,7 @@ const LanguageSkill = (skills) => {
         </motion.div>
         <motion.div className="mt-[32px]" variants={container} initial="hidden" animate="visible">
           {skills &&
-            skills.skills.map(({ skillName, icon, content }) => {
+            skills.map(({ skillName, icon, content }) => {
               return (
                 <motion.div
                   key={skillName}

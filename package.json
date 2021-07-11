@@ -6,11 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint \"**/*.{ts,tsx}\"",
-    "lint:fix": "npm lint --fix"
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "format": "prettier --write 'src/**/*.{js,ts,json}'"
   },
   "dependencies": {
-    "contentful": "^8.4.2",
     "framer-motion": "^4.1.17",
     "microcms-js-sdk": "^1.2.0",
     "moment": "^2.29.1",
@@ -29,11 +29,14 @@
     "autoprefixer": "^10.2.6",
     "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.1",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-config-prettier": "8.3.0",
     "eslint-plugin-react": "^7.24.0",
     "postcss": "^8.2.13",
-    "prettier": "^2.3.2",
+    "prettier": "2.3.2",
     "tailwindcss": "^2.2.2",
-    "typescript": "^4.3.4"
-  }
+    "typescript": "^4.3.5"
+  },
+  "eslintIgnore": [
+    "/.eslintrc.js"
+  ]
 }

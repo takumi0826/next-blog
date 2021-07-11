@@ -1,4 +1,9 @@
-const DetailNote = ({ data }) => {
+import { NoteProps } from 'types'
+type Props = {
+  data: NoteProps
+}
+
+const DetailNote: React.FC<Props> = ({ data }) => {
   return (
     <>
       <div
@@ -8,7 +13,7 @@ const DetailNote = ({ data }) => {
         }}
       />
     </>
-  );
-};
+  )
+}
 
-export default DetailNote;
+export default DetailNote

@@ -1,9 +1,14 @@
-import Image from 'next/image'
 import Head from 'next/head'
-import { Header, Footer } from 'components/layouts'
 import { HeadTitle2, PostNote, PostDiary, MainVisual } from 'components/contents'
+import { NoteProps, DiaryProps } from 'types'
+import { NextPage } from 'next'
 
-export default function Home({ note, diary }) {
+type Props = {
+  note: NoteProps[]
+  diary: DiaryProps[]
+}
+
+const Home: NextPage<Props> = ({ note, diary }) => {
   return (
     <>
       <Head>
@@ -15,11 +20,11 @@ export default function Home({ note, diary }) {
       <main className="container mx-auto py-[120px] px-[24px]">
         <section className="">
           <HeadTitle2 title="Diary" />
-          <PostDiary items={diary} />
+          <PostDiary diary={diary} />
         </section>
         <section className="pt-[240px]">
           <HeadTitle2 title="Note" />
-          <PostNote items={note} />
+          <PostNote note={note} />
         </section>
       </main>
     </>
@@ -61,3 +66,5 @@ const getDiaryPosts = async () => {
   const resData = res.json()
   return resData
 }
+
+export default Home

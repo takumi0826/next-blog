@@ -2,8 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Moment from 'react-moment'
 import { motion } from 'framer-motion'
+import { DiaryProps } from 'types'
 
-const PostDiary = ({ items }) => {
+type Props = {
+  diary: DiaryProps[]
+}
+
+const PostDiary: React.FC<Props> = ({ diary }) => {
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -30,7 +35,7 @@ const PostDiary = ({ items }) => {
       initial="hidden"
       animate="visible"
     >
-      {items.map(({ id, title, updatedAt, image }) => {
+      {diary.map(({ id, title, updatedAt, image }) => {
         return (
           <Link key={id} href={`diary/${id}`}>
             <motion.a

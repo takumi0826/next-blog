@@ -1,4 +1,4 @@
-const Custom404 = (props) => {
+const Custom404 = () => {
   return (
     <div className="flex justify-center">
       <div className="w-[50%] text-center">

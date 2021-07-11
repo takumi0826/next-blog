@@ -1,10 +1,15 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
 import { LanguageSkill } from 'components/contents'
 import { motion } from 'framer-motion'
+import { SkillProps } from 'types'
+import { NextPage } from 'next'
 
-export default function Contact({ skills }) {
+type Props = {
+  skills: SkillProps[]
+}
+
+const Profile: NextPage<Props> = ({ skills }) => {
   return (
     <>
       <Head>
@@ -83,3 +88,5 @@ const getSkillPosts = async () => {
   const resData = res.json()
   return resData
 }
+
+export default Profile
