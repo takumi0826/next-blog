@@ -13,8 +13,6 @@ const Home: NextPage<Props> = ({ note, diary }) => {
     <>
       <Head>
         <title>LapiBlog</title>
-        <meta name="description" content="日記と勉強したことをまとめるブログ" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainVisual src={'/flower.jpg'} />
       <main className="container mx-auto py-[120px] px-[24px]">

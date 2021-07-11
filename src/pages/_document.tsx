@@ -1,11 +1,13 @@
-import { GA_TRACKING_ID } from 'lib/gtag';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { GA_TRACKING_ID } from 'lib/gtag'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="ja">
         <Head>
+          <meta name="description" content="日記と勉強したことをまとめるブログ" />
+          <link rel="icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
@@ -33,6 +35,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
