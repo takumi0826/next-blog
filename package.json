@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export && next-sitemap --config sitemap.config.js",
     "start": "next start",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
@@ -31,6 +31,7 @@
     "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-react": "^7.24.0",
+    "next-sitemap": "^1.6.140",
     "postcss": "^8.2.13",
     "prettier": "2.3.2",
     "tailwindcss": "^2.2.2",
