@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
           <meta property="og:url" content={url} />
           <meta property="og:description" content={description} />
           <meta property="og:site_name" content={title} />
-          <meta property="og:image" content={`/flower-ogp.jpg`} />
+          <meta property="og:image" content={`${url}/flower-ogp.jpg`} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="format-detection" content="telephone=no" />
           <link rel="apple-touch-icon" href="/logo.png" />
