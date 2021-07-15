@@ -12,7 +12,8 @@ const Home: NextPage<Props> = ({ note, diary }) => {
   return (
     <>
       <Head>
-        <title>LapiBlog</title>
+        <title>ラピブログ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <MainVisual src={'/flower.jpg'} />
       <main className="container mx-auto py-[120px] px-[24px]">

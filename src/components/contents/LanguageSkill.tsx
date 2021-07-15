@@ -58,7 +58,7 @@ const LanguageSkill: React.FC<Props> = ({ skills }) => {
                   </div>
                   <div className="w-full ml-[24px]">
                     <h3 className="text-lg">{skillName}</h3>
-                    <p
+                    <div
                       className="text-xs mt-[8px]"
                       dangerouslySetInnerHTML={{
                         __html: content,
