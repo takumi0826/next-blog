@@ -21,7 +21,7 @@ const Home: NextPage<Props> = ({ note, diary }) => {
           <HeadTitle2 title="Diary" />
           <PostDiary diary={diary} />
         </section>
-        <section className="pt-[240px]">
+        <section className="pt-[120px] md:pt-[240px]">
           <HeadTitle2 title="Note" />
           <PostNote note={note} />
         </section>

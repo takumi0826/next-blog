@@ -4,7 +4,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 const url = 'https://lapiblog.com'
 const title = 'ラピブログ'
 const description =
-  '日記と勉強したことをまとめるブログ。Next.js,tailwind.css,MicroCMSで作成しました。'
+  '日記と勉強したことをまとめるブログ。Next.js,tailwind.css,microCMSで作成しました。'
 
 export default class MyDocument extends Document {
   render(): JSX.Element {
