@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           <Header />
           <motion.div
             key={router.route}
-            className="w-[100vw] h-[100vh] from-blue-600 via-teal-500 to-purple-500 bg-gradient-to-tl fixed left-0 top-0 z-40"
+            className="w-[100vw] min-h-[100vh] from-blue-600 via-teal-500 to-purple-500 bg-gradient-to-tl fixed left-0 top-0 z-40"
             initial="hidden"
             animate="show"
             variants={container}
@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <>
           <motion.div
             key={router.route}
-            className="w-[100vw] h-[100vh] from-blue-600 via-teal-500 to-purple-500 bg-gradient-to-tl fixed left-0 top-0 z-40"
+            className="w-[100vw] min-h-[100vh] from-blue-600 via-teal-500 to-purple-500 bg-gradient-to-tl fixed left-0 top-0 z-40"
             initial="hidden"
             animate="show"
             variants={container}

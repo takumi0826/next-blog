@@ -3,7 +3,7 @@ import Link from 'next/link'
 const BurgerMenu = ({ navs, open, toggle }) => {
   return (
     <nav
-      className={`fixed z-30 w-[300px] h-[100vh] top-0 duration-200 bg-primary-500 py-[160px] px-[40px]
+      className={`fixed z-30 w-[300px] min-h-[100vh] top-0 duration-200 bg-primary-500 py-[160px] px-[40px]
     ${open ? 'right-0' : 'right-[-100%]'}`}
     >
       <ul className="">
