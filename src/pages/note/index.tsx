@@ -14,9 +14,7 @@ const Note: NextPage<Props> = ({ note }) => {
       <Head>
         <title>Note</title>
       </Head>
-      <div className="">
-        <PostNote note={note} />
-      </div>
+      <PostNote note={note} />
     </>
   )
 }

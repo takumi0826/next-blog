@@ -1,6 +1,6 @@
 import Head from 'next/head'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { PostTitle1, DetailNote } from 'components/contents'
-import { NextPage } from 'next'
 import { NoteProps } from 'types'
 
 type Props = {
@@ -21,7 +21,7 @@ const NoteArticle: NextPage<Props> = ({ data }) => {
   )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch('https://microblog.microcms.io/api/v1/note/', {
     headers: {
       'X-API-KEY': process.env.MICRO_CMS_API_KEY,
@@ -33,8 +33,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false }
 }
 
-// ルーティングの情報が入ったparamsを受け取る
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params.id
   const res = await fetch(`https://microblog.microcms.io/api/v1/note/${id}`, {
     headers: {

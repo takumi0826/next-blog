@@ -35,9 +35,9 @@ const PostNote: React.FC<Props> = ({ note }) => {
       initial="hidden"
       animate="visible"
     >
-      {note.map(({ id, title, updatedAt, category }) => {
+      {note.map(({ id, title, updatedAt, categorys }) => {
         return (
-          <Link key={id} href={`note/${id}`}>
+          <Link key={id} href={`/note/${id}`}>
             <motion.a
               key={id}
               variants={item}
@@ -60,14 +60,17 @@ const PostNote: React.FC<Props> = ({ note }) => {
               </div>
               <h2 className="font-bold pb-[16px] border-b border-gray-200 truncate">{title}</h2>
               <div className="flex mt-[8px]">
-                {category.map((item) => {
+                {categorys.map((category) => {
                   return (
-                    <div
-                      key={item}
-                      className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2"
-                    >
-                      {item}
-                    </div>
+                    <Link key={category.id} href={`/tags/${category.id}`}>
+                      <a
+                        key={category.id}
+                        id={category.name}
+                        className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2 block"
+                      >
+                        {category.name}
+                      </a>
+                    </Link>
                   )
                 })}
               </div>

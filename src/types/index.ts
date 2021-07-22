@@ -19,7 +19,7 @@ export type NoteProps = {
   updatedAt: string
   title: string
   body: string
-  category: [string]
+  categorys: Category[]
 }
 
 export type SkillProps = {
@@ -31,4 +31,11 @@ export type SkillProps = {
     width: number
   }
   content: string
+}
+
+export type Category = {
+  id: string
+  createdAt: string
+  updatedAt: string
+  name: string
 }

@@ -11,6 +11,7 @@
 @supports (-webkit-touch-callout: none) {
   body {
     /* The hack for Safari */
+    min-height: 100vh;
     height: -webkit-fill-available;
   }
 }
