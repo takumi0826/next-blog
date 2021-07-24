@@ -1,45 +1,40 @@
 import Head from 'next/head'
 import { PostNote } from 'components/contents'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { NoteProps } from 'types'
+import { ListResponse, Category, NoteResponse } from 'types'
+import { client } from 'lib/client'
 
 type Props = {
-  tags: NoteProps[]
+  tags: NoteResponse[]
 }
 
 const TagsNote: NextPage<Props> = ({ tags }) => {
   return (
     <>
+      <Head>
+        <title>Note</title>
+      </Head>
       <PostNote note={tags} />
     </>
   )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://microblog.microcms.io/api/v1/tags/', {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-    .then((response) => response.json())
-    .catch(() => null)
+  const res = await client.get<ListResponse<Category>>({ endpoint: 'tags' })
   const paths = res.contents.map(({ id }) => `/tags/${id}`)
   return { paths, fallback: false }
 }
 
 // ルーティングの情報が入ったparamsを受け取る
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params) return { props: { tags: null } }
   const id = params.id
-  const res = await fetch(
-    `https://microblog.microcms.io/api/v1/note?filters=categorys[contains]${id}`,
-    {
-      headers: {
-        'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-      },
+  const res = await client.get<ListResponse<NoteResponse>>({
+    endpoint: 'note',
+    queries: {
+      filters: `categorys[contains]${id}`,
     },
-  )
-    .then((response) => response.json())
-    .catch(() => null)
+  })
 
   return { props: { tags: res.contents } }
 }

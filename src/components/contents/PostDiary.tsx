@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Moment from 'react-moment'
 import { motion } from 'framer-motion'
-import { DiaryProps } from 'types'
+import { DiaryResponse } from 'types'
 
 type Props = {
-  diary: DiaryProps[]
+  diary: DiaryResponse[]
 }
 
 const PostDiary: React.FC<Props> = ({ diary }) => {

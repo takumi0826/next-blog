@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import { HeadTitle2, PostNote, PostDiary, MainVisual } from 'components/contents'
-import { NoteProps, DiaryProps } from 'types'
-import { NextPage } from 'next'
+import { ListResponse, NoteResponse, DiaryResponse } from 'types'
+import { GetStaticProps, NextPage } from 'next'
+import { client } from 'lib/client'
 
 type Props = {
-  note: NoteProps[]
-  diary: DiaryProps[]
+  note: NoteResponse[]
+  diary: DiaryResponse[]
 }
 
 const Home: NextPage<Props> = ({ note, diary }) => {
@@ -30,40 +31,13 @@ const Home: NextPage<Props> = ({ note, diary }) => {
   )
 }
 
-export const getStaticProps = async () => {
-  const resNote = await getNotePosts()
-  const resDiary = await getDiaryPosts()
+export const getStaticProps: GetStaticProps = async () => {
+  const resNote = await client.get<ListResponse<NoteResponse>>({ endpoint: 'note' })
+  const resDiary = await client.get<ListResponse<DiaryResponse>>({ endpoint: 'diary' })
 
-  // responseが無ければ404にリダイレクトする
-  if (!resNote && !resDiary) {
-    return {
-      notFound: true,
-    }
-  }
   return {
     props: { layout: 'home', note: resNote.contents, diary: resDiary.contents },
   }
-}
-
-const getNotePosts = async () => {
-  const url = 'https://microblog.microcms.io/api/v1/note'
-  const res = await fetch(url, {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-  const resData = res.json()
-  return resData
-}
-const getDiaryPosts = async () => {
-  const url = 'https://microblog.microcms.io/api/v1/diary'
-  const res = await fetch(url, {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-  const resData = res.json()
-  return resData
 }
 
 export default Home

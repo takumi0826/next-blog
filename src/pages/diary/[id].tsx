@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import { PostTitle1, DetailDiary } from 'components/contents'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { DiaryProps } from 'types'
+import { ListResponse, DiaryResponse } from 'types'
+import { client } from 'lib/client'
 
 type Props = {
-  data: DiaryProps
+  data: DiaryResponse
 }
 
 const DiaryArticle: NextPage<Props> = ({ data }) => {
@@ -22,27 +23,16 @@ const DiaryArticle: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://microblog.microcms.io/api/v1/diary/', {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-    .then((response) => response.json())
-    .catch(() => [])
+  const res = await client.get<ListResponse<DiaryResponse>>({ endpoint: 'diary' })
   const paths = res.contents.map(({ id }) => `/diary/${id}`)
   return { paths, fallback: false }
 }
 
 // ルーティングの情報が入ったparamsを受け取る
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params) return { props: { data: null } }
   const id = params.id
-  const res = await fetch(`https://microblog.microcms.io/api/v1/diary/${id}`, {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-    .then((response) => response.json())
-    .catch(() => null)
+  const res = await client.get<DiaryResponse>({ endpoint: `diary/${id}` })
 
   return { props: { data: res } }
 }

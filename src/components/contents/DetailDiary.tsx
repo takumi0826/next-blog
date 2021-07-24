@@ -1,7 +1,7 @@
-import { DiaryProps } from 'types'
+import { DiaryResponse } from 'types'
 
 type Props = {
-  data: DiaryProps
+  data: DiaryResponse
 }
 
 const DetailDiary: React.FC<Props> = ({ data }) => {

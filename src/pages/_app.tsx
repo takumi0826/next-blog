@@ -5,10 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Header, Footer } from 'components/layouts'
 import { GA_TRACKING_ID, pageview } from 'lib/gtag'
 import { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-function MyApp({ Component, pageProps, router }: AppProps) {
+const MyApp = ({ Component, pageProps, router }: AppProps) => {
   const container = {
     hidden: { y: 0 },
     show: {

@@ -2,10 +2,10 @@ import React from 'react'
 import Image from 'next/image'
 import { HeadTitle2 } from 'components/contents'
 import { motion } from 'framer-motion'
-import { SkillProps } from 'types'
+import { SkillResponse } from 'types'
 
 type Props = {
-  skills: SkillProps[]
+  skills: SkillResponse[]
 }
 
 const LanguageSkill: React.FC<Props> = ({ skills }) => {

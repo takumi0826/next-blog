@@ -2,11 +2,12 @@ import Image from 'next/image'
 import Head from 'next/head'
 import { LanguageSkill } from 'components/contents'
 import { motion } from 'framer-motion'
-import { SkillProps } from 'types'
-import { NextPage } from 'next'
+import { ListResponse, SkillResponse } from 'types'
+import { GetStaticProps, NextPage } from 'next'
+import { client } from 'lib/client'
 
 type Props = {
-  skills: SkillProps[]
+  skills: SkillResponse[]
 }
 
 const Profile: NextPage<Props> = ({ skills }) => {
@@ -62,29 +63,12 @@ const Profile: NextPage<Props> = ({ skills }) => {
   )
 }
 
-export const getStaticProps = async () => {
-  const resData = await getSkillPosts()
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await client.get<ListResponse<SkillResponse>>({ endpoint: 'skill' })
 
-  // responseが無ければ404にリダイレクトする
-  if (!resData) {
-    return {
-      notFound: true,
-    }
-  }
   return {
-    props: { skills: resData.contents || null },
+    props: { skills: res.contents },
   }
-}
-
-const getSkillPosts = async () => {
-  const url = 'https://microblog.microcms.io/api/v1/skill'
-  const res = await fetch(url, {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-  const resData = res.json()
-  return resData
 }
 
 export default Profile

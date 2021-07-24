@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Moment from 'react-moment'
 import { motion } from 'framer-motion'
-import { NoteProps } from 'types'
+import { NoteResponse } from 'types'
 
 type Props = {
-  note: NoteProps[]
+  note: NoteResponse[]
 }
 
 const PostNote: React.FC<Props> = ({ note }) => {

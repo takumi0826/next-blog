@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { PostTitle1, DetailNote } from 'components/contents'
-import { NoteProps } from 'types'
+import { ListResponse, NoteResponse } from 'types'
+import { client } from 'lib/client'
 
 type Props = {
-  data: NoteProps
+  data: NoteResponse
 }
 
 const NoteArticle: NextPage<Props> = ({ data }) => {
@@ -22,26 +23,15 @@ const NoteArticle: NextPage<Props> = ({ data }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://microblog.microcms.io/api/v1/note/', {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-    .then((response) => response.json())
-    .catch(() => null)
+  const res = await client.get<ListResponse<NoteResponse>>({ endpoint: 'note' })
   const paths = res.contents.map(({ id }) => `/note/${id}`)
   return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params) return { props: { data: null } }
   const id = params.id
-  const res = await fetch(`https://microblog.microcms.io/api/v1/note/${id}`, {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-    .then((response) => response.json())
-    .catch(() => null)
+  const res = await client.get<NoteResponse>({ endpoint: `note/${id}` })
 
   return { props: { data: res } }
 }

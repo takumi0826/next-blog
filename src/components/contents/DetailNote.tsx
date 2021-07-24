@@ -1,6 +1,6 @@
-import { NoteProps } from 'types'
+import { NoteResponse } from 'types'
 type Props = {
-  data: NoteProps
+  data: NoteResponse
 }
 
 const DetailNote: React.FC<Props> = ({ data }) => {

@@ -1,10 +1,11 @@
 import Head from 'next/head'
-import { NextPage } from 'next'
-import { HeadTitle2, PostDiary } from 'components/contents'
-import { DiaryProps } from 'types'
+import { GetStaticProps, NextPage } from 'next'
+import { PostDiary } from 'components/contents'
+import { ListResponse, DiaryResponse } from 'types'
+import { client } from 'lib/client'
 
 type Props = {
-  diary: DiaryProps[]
+  diary: DiaryResponse[]
 }
 
 const Diary: NextPage<Props> = ({ diary }) => {
@@ -20,29 +21,12 @@ const Diary: NextPage<Props> = ({ diary }) => {
   )
 }
 
-export const getStaticProps = async () => {
-  const resDiary = await getDiaryPosts()
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await client.get<ListResponse<DiaryResponse>>({ endpoint: 'diary' })
 
-  // responseが無ければ404にリダイレクトする
-  if (!resDiary) {
-    return {
-      notFound: true,
-    }
-  }
   return {
-    props: { diary: resDiary.contents || null },
+    props: { diary: res.contents },
   }
-}
-
-const getDiaryPosts = async () => {
-  const url = 'https://microblog.microcms.io/api/v1/diary'
-  const res = await fetch(url, {
-    headers: {
-      'X-API-KEY': process.env.MICRO_CMS_API_KEY,
-    },
-  })
-  const resData = res.json()
-  return resData
 }
 
 export default Diary
