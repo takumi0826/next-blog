@@ -58,3 +58,13 @@ export type Category = {
   revisedAt: string
   name: string
 }
+
+// type eventProps = {
+//   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+//   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+//   onkeypress: (event: React.KeyboardEvent<HTMLInputElement>) => void
+//   onBlur: (event: React.FocusEvent<HTMLInputElement>) => void
+//   onFocus: (event: React.FocusEvent<HTMLInputElement>) => void
+//   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+//   (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+// }

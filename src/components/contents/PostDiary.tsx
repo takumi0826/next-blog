@@ -8,7 +8,7 @@ type Props = {
   diary: DiaryResponse[]
 }
 
-const PostDiary: React.FC<Props> = ({ diary }) => {
+const PostDiary: React.FC<Props> = (props) => {
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -35,7 +35,7 @@ const PostDiary: React.FC<Props> = ({ diary }) => {
       initial="hidden"
       animate="visible"
     >
-      {diary.map(({ id, title, updatedAt, image }) => {
+      {props.diary.map(({ id, title, updatedAt, image }) => {
         return (
           <Link key={id} href={`diary/${id}`}>
             <motion.a

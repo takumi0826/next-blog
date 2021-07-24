@@ -3,13 +3,13 @@ type Props = {
   data: NoteResponse
 }
 
-const DetailNote: React.FC<Props> = ({ data }) => {
+const DetailNote: React.FC<Props> = (props) => {
   return (
     <>
       <div
         className="markdown"
         dangerouslySetInnerHTML={{
-          __html: data.body,
+          __html: props.data.body,
         }}
       />
     </>

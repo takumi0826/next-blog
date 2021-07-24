@@ -2,7 +2,8 @@ import { HeaderNav, BurgerButton, BurgerMenu, BackgroundMask } from './'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-const Header = () => {
+
+const Header: React.FC = () => {
   const navs = [
     { id: 1, title: 'Diary', url: '/diary' },
     { id: 2, title: 'Note', url: '/note' },

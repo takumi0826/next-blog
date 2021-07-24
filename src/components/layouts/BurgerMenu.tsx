@@ -1,22 +1,33 @@
 import Link from 'next/link'
 
-const BurgerMenu = ({ navs, open, toggle }) => {
+type NavProps = {
+  id: number
+  title: string
+  url: string
+}
+type Props = {
+  navs: NavProps[]
+  open: boolean
+  toggle: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+}
+
+const BurgerMenu: React.FC<Props> = (props) => {
   return (
     <nav
       className={`fixed z-30 w-[300px] min-h-[100vh] top-0 duration-200 bg-primary-500 py-[160px] px-[40px]
-    ${open ? 'right-0' : 'right-[-100%]'}`}
+    ${props.open ? 'right-0' : 'right-[-100%]'}`}
     >
       <ul className="">
-        {navs.map(({ title, id, url }) => {
+        {props.navs.map(({ title, id, url }) => {
           return (
             <li key={id} className="opacity-90 hover:opacity-100">
               <Link href={url}>
-                <a
-                  onClick={toggle}
+                <div
+                  onClick={props.toggle}
                   className="py-[16px] block text-xl text-primary-100 tracking-widest"
                 >
                   {title}
-                </a>
+                </div>
               </Link>
             </li>
           )

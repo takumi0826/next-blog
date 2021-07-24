@@ -8,7 +8,7 @@ type Props = {
   skills: SkillResponse[]
 }
 
-const LanguageSkill: React.FC<Props> = ({ skills }) => {
+const LanguageSkill: React.FC<Props> = (props) => {
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -38,8 +38,8 @@ const LanguageSkill: React.FC<Props> = ({ skills }) => {
           <HeadTitle2 title={'スキル'} />
         </motion.div>
         <motion.div className="mt-[32px]" variants={container} initial="hidden" animate="visible">
-          {skills &&
-            skills.map(({ skillName, icon, content }) => {
+          {props.skills &&
+            props.skills.map(({ skillName, icon, content }) => {
               return (
                 <motion.div
                   key={skillName}

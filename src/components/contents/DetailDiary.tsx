@@ -4,13 +4,13 @@ type Props = {
   data: DiaryResponse
 }
 
-const DetailDiary: React.FC<Props> = ({ data }) => {
+const DetailDiary: React.FC<Props> = (props) => {
   return (
     <>
       <div
         className="markdown"
         dangerouslySetInnerHTML={{
-          __html: data.body,
+          __html: props.data.body,
         }}
       />
     </>

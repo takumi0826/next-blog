@@ -1,4 +1,4 @@
-const Custom404 = () => {
+const Custom404: React.FC = () => {
   return (
     <div className="flex justify-center">
       <div className="text-center">

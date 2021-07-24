@@ -8,7 +8,8 @@ type Props = {
   note: NoteResponse[]
 }
 
-const PostNote: React.FC<Props> = ({ note }) => {
+
+const PostNote: React.FC<Props> = (props) => {
   const container = {
     hidden: { opacity: 0, scale: 0 },
     visible: {
@@ -35,7 +36,7 @@ const PostNote: React.FC<Props> = ({ note }) => {
       initial="hidden"
       animate="visible"
     >
-      {note.map(({ id, title, updatedAt, categorys }) => {
+      {props.note.map(({ id, title, updatedAt, categorys }) => {
         return (
           <Link key={id} href={`/note/${id}`}>
             <motion.a
