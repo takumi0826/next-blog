@@ -7,7 +7,7 @@ import { GA_TRACKING_ID, pageview } from 'lib/gtag'
 import { AppProps } from 'next/app'
 import { useEffect } from 'react'
 
-const MyApp = ({ Component, pageProps, router }: AppProps) => {
+const MyApp = ({ Component, pageProps, router }: AppProps): JSX.Element => {
   const container = {
     hidden: { y: 0 },
     show: {
