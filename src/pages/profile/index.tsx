@@ -27,7 +27,7 @@ const Profile: NextPage<Props> = ({ skills }) => {
             stiffness: 120,
           }}
         >
-          <div className="max-w-[460px] bg-white shadow-lg rounded-md mx-auto">
+          <div className="max-w-[460px] shadow-lg rounded-md mx-auto">
             <Image
               className="align-top rounded-tr-md rounded-tl-md"
               src={'/lapis.png'}

@@ -41,7 +41,7 @@ const PostDiary: React.FC<Props> = (props) => {
             <motion.a
               key={id}
               variants={item}
-              className="col-auto rounded-3xl shadow-md bg-white hover:shadow-xl transition duration-300 hover:-translate-y-2 overflow-hidden"
+              className="col-auto rounded-3xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 overflow-hidden"
             >
               <Image
                 src={image.url}

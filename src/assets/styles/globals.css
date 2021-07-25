@@ -5,7 +5,7 @@
 
 @layer base {
   body {
-    @apply text-[#1b1c1d];
+    @apply text-[#1b1c1d] bg-[#f1f1f7];
   }
 }
 @supports (-webkit-touch-callout: none) {
