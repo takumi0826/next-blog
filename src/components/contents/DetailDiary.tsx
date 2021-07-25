@@ -8,7 +8,7 @@ const DetailDiary: React.FC<Props> = (props) => {
   return (
     <>
       <div
-        className="markdown"
+        className="prose prose-sm"
         dangerouslySetInnerHTML={{
           __html: props.data.body,
         }}

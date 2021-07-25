@@ -8,7 +8,6 @@ type Props = {
   note: NoteResponse[]
 }
 
-
 const PostNote: React.FC<Props> = (props) => {
   const container = {
     hidden: { opacity: 0, scale: 0 },
@@ -64,13 +63,13 @@ const PostNote: React.FC<Props> = (props) => {
                 {categorys.map((category) => {
                   return (
                     <Link key={category.id} href={`/tags/${category.id}`}>
-                      <a
+                      <div
                         key={category.id}
                         id={category.name}
                         className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2 block"
                       >
                         {category.name}
-                      </a>
+                      </div>
                     </Link>
                   )
                 })}
