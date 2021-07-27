@@ -6,7 +6,7 @@ type Props = {
 const MainVisual: React.FC<Props> = (props) => {
   return (
     <>
-      <div className="h-[100vh] w-[100vw]">
+      <div className="h-[100vh]">
         <Image
           className="align-top"
           src={props.src}
