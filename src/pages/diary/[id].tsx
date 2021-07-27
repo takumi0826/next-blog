@@ -14,7 +14,7 @@ const DiaryArticle: NextPage<Props> = ({ data }) => {
       <Head>
         <title>{data.title}</title>
       </Head>
-      <div className="">
+      <div className="max-w-[600px] mx-auto">
         <PostTitle1 data={data} />
         {DetailDiary && <DetailDiary data={data} />}
       </div>
