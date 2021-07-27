@@ -8,7 +8,7 @@ const DetailNote: React.FC<Props> = (props) => {
   return (
     <>
       <div
-        className="prose prose-sm"
+        className="prose prose-md"
         dangerouslySetInnerHTML={{
           __html: props.data.body,
         }}
