@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 
 const MyApp = ({ Component, pageProps, router }: AppProps): JSX.Element => {
   const container = {
-    hidden: { y: 0 },
+    hidden: { y: 0, opacity: 0 },
     show: {
       y: '-100vh',
       transition: {
