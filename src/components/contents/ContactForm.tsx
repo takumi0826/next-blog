@@ -1,4 +1,4 @@
-const ContactForm = () => {
+const ContactForm: React.FC = () => {
   return (
     <>
       <p className="flex items-center justify-center">現在作成中</p>
