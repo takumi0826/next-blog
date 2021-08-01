@@ -22,7 +22,10 @@ const Diary: NextPage<Props> = ({ diary }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await client.get<ListResponse<DiaryResponse>>({ endpoint: 'diary' })
+  const res = await client.get<ListResponse<DiaryResponse>>({
+    endpoint: 'diary',
+    queries: { orders: '-updatedAt' },
+  })
 
   return {
     props: { diary: res.contents },

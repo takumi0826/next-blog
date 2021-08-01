@@ -20,7 +20,10 @@ const Note: NextPage<Props> = ({ note }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await client.get<ListResponse<NoteResponse>>({ endpoint: 'note' })
+  const res = await client.get<ListResponse<NoteResponse>>({
+    endpoint: 'note',
+    queries: { orders: '-updatedAt' },
+  })
 
   return {
     props: { note: res.contents },

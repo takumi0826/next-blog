@@ -33,6 +33,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     endpoint: 'note',
     queries: {
       filters: `categorys[contains]${id}`,
+      orders: '-updatedAt',
     },
   })
 
