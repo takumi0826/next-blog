@@ -32,8 +32,14 @@ const Home: NextPage<Props> = ({ note, diary }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const resNote = await client.get<ListResponse<NoteResponse>>({ endpoint: 'note' })
-  const resDiary = await client.get<ListResponse<DiaryResponse>>({ endpoint: 'diary' })
+  const resNote = await client.get<ListResponse<NoteResponse>>({
+    endpoint: 'note',
+    queries: { orders: '-updatedAt' },
+  })
+  const resDiary = await client.get<ListResponse<DiaryResponse>>({
+    endpoint: 'diary',
+    queries: { orders: '-updatedAt' },
+  })
 
   return {
     props: { layout: 'home', note: resNote.contents, diary: resDiary.contents },
