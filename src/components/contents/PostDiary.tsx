@@ -13,7 +13,7 @@ type Props = {
 const PostDiary: React.FC<Props> = (props) => {
   const controls = useAnimation()
   const { ref, inView } = useInView({
-    threshold: [0.25],
+    threshold: [0.1],
     triggerOnce: true,
   })
   useEffect(() => {
