@@ -1,14 +1,29 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Moment from 'react-moment'
-import { motion } from 'framer-motion'
 import { DiaryResponse } from 'types'
+import Moment from 'react-moment'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { useEffect } from 'react'
 
 type Props = {
   diary: DiaryResponse[]
 }
 
 const PostDiary: React.FC<Props> = (props) => {
+  const controls = useAnimation()
+  const { ref, inView } = useInView({
+    threshold: [0.25],
+    triggerOnce: true,
+  })
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+    if (!inView) {
+      controls.start('hidden')
+    }
+  }, [controls, inView])
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -30,10 +45,11 @@ const PostDiary: React.FC<Props> = (props) => {
   }
   return (
     <motion.div
+      ref={ref}
       className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-[64px]"
       variants={container}
       initial="hidden"
-      animate="visible"
+      animate={controls}
     >
       {props.diary.map(({ id, title, updatedAt, image }) => {
         return (
