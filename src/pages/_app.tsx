@@ -13,7 +13,7 @@ const MyApp = ({ Component, pageProps, router }: AppProps): JSX.Element => {
     show: {
       y: '-100vh',
       transition: {
-        ease: 'easeInOut',
+        ease: [1, 0.01, 0.49, 1.05],
         duration: 0.6,
       },
     },
@@ -45,7 +45,9 @@ const MyApp = ({ Component, pageProps, router }: AppProps): JSX.Element => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <Component {...pageProps} />
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} />
+            </AnimatePresence>
           </motion.div>
           <Footer />
         </>
@@ -62,7 +64,9 @@ const MyApp = ({ Component, pageProps, router }: AppProps): JSX.Element => {
             variants={container}
           ></motion.div>
           <Layout>
-            <Component {...pageProps} />
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} />
+            </AnimatePresence>
           </Layout>
         </>
       )
