@@ -14,9 +14,7 @@ const Diary: NextPage<Props> = ({ diary }) => {
       <Head>
         <title>diary</title>
       </Head>
-      <div className="">
-        <PostDiary diary={diary} />
-      </div>
+      <PostDiary diary={diary} />
     </>
   )
 }

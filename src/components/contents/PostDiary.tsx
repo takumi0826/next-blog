@@ -13,6 +13,7 @@ type Props = {
 const PostDiary: React.FC<Props> = (props) => {
   const controls = useAnimation()
   const { ref, inView } = useInView({
+    rootMargin: '-50px',
     triggerOnce: true,
   })
   useEffect(() => {
@@ -43,49 +44,52 @@ const PostDiary: React.FC<Props> = (props) => {
     },
   }
   return (
-    <motion.div
-      ref={ref}
-      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-[64px]"
-      variants={container}
-      initial="hidden"
-      animate={controls}
-    >
-      {props.diary.map(({ id, title, updatedAt, image }) => {
-        return (
-          <Link key={id} href={`diary/${id}`}>
-            <motion.a
-              key={id}
-              variants={item}
-              className="col-auto rounded-3xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 overflow-hidden"
-            >
-              <Image
-                src={image.url}
-                width={560}
-                height={480}
-                objectFit={'cover'}
-                className="rounded-tl-3xl rounded-tr-3xl align-bottom hover:scale-[1.1] duration-300"
-              />
-              <div className="px-[16px] pt-[8px] pb-[32px]">
-                <div className="flex items-center justify-end">
-                  <div className="mr-1">
-                    <Image
-                      src={'/icon-time.svg'}
-                      alt={'Picture of the author'}
-                      width={12}
-                      height={12}
-                    />
+    <>
+      <div ref={ref}>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
+          variants={container}
+          initial="hidden"
+          animate={controls}
+        >
+          {props.diary.map(({ id, title, updatedAt, image }) => {
+            return (
+              <Link key={id} href={`diary/${id}`}>
+                <motion.a
+                  key={id}
+                  variants={item}
+                  className="col-auto rounded-3xl shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 overflow-hidden"
+                >
+                  <Image
+                    src={image.url}
+                    width={560}
+                    height={480}
+                    objectFit={'cover'}
+                    className="rounded-tl-3xl rounded-tr-3xl align-bottom hover:scale-[1.1] duration-300"
+                  />
+                  <div className="px-[16px] pt-[8px] pb-[32px]">
+                    <div className="flex items-center justify-end">
+                      <div className="mr-1">
+                        <Image
+                          src={'/icon-time.svg'}
+                          alt={'Picture of the author'}
+                          width={12}
+                          height={12}
+                        />
+                      </div>
+                      <Moment className="text-gray-300 text-xs" format="YYYY/MM/DD">
+                        {updatedAt}
+                      </Moment>
+                    </div>
+                    <p className="truncate">{title}</p>
                   </div>
-                  <Moment className="text-gray-300 text-xs" format="YYYY/MM/DD">
-                    {updatedAt}
-                  </Moment>
-                </div>
-                <p className="truncate">{title}</p>
-              </div>
-            </motion.a>
-          </Link>
-        )
-      })}
-    </motion.div>
+                </motion.a>
+              </Link>
+            )
+          })}
+        </motion.div>
+      </div>
+    </>
   )
 }
 

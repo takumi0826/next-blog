@@ -20,11 +20,15 @@ const Home: NextPage<Props> = ({ note, diary }) => {
       <main className="container mx-auto py-[120px] px-[24px]">
         <section className="">
           <HeadTitle2 title="Diary" />
-          <PostDiary diary={diary} />
+          <div className="mt-[64px]">
+            <PostDiary diary={diary} />
+          </div>
         </section>
         <section className="pt-[120px] md:pt-[240px]">
           <HeadTitle2 title="Note" />
-          <PostNote note={note} />
+          <div className="mt-[64px]">
+            <PostNote note={note} />
+          </div>
         </section>
       </main>
     </>

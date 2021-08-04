@@ -13,6 +13,7 @@ type Props = {
 const PostNote: React.FC<Props> = (props) => {
   const controls = useAnimation()
   const { ref, inView } = useInView({
+    rootMargin: '-50px',
     triggerOnce: true,
   })
   useEffect(() => {
@@ -44,57 +45,58 @@ const PostNote: React.FC<Props> = (props) => {
 
   return (
     <>
-      <motion.div
-        ref={ref}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-[64px]"
-        variants={container}
-        initial="hidden"
-        animate={controls}
-      >
-        {props.note.map(({ id, title, updatedAt, categorys }) => {
-          return (
-            <Link key={id} href={`/note/${id}`}>
-              <motion.a
-                key={id}
-                variants={item}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full max-w-[340px] mx-auto p-[16px] col-auto rounded-3xl shadow-md hover:bg-primary-100 hover:bg-opacity-30 hover:shadow-xl transition duration-300"
-              >
-                <div className="flex items-center justify-end">
-                  <div className="mr-1">
-                    <Image
-                      src={'/icon-time.svg'}
-                      alt={'Picture of the author'}
-                      width={12}
-                      height={12}
-                    />
+      <div ref={ref}>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+          variants={container}
+          initial="hidden"
+          animate={controls}
+        >
+          {props.note.map(({ id, title, updatedAt, categorys }) => {
+            return (
+              <Link key={id} href={`/note/${id}`}>
+                <motion.a
+                  key={id}
+                  variants={item}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full max-w-[340px] mx-auto p-[16px] col-auto rounded-3xl shadow-md hover:bg-primary-100 hover:bg-opacity-30 hover:shadow-xl transition duration-300"
+                >
+                  <div className="flex items-center justify-end">
+                    <div className="mr-1">
+                      <Image
+                        src={'/icon-time.svg'}
+                        alt={'Picture of the author'}
+                        width={12}
+                        height={12}
+                      />
+                    </div>
+                    <Moment className="text-gray-300 text-xs" format="YYYY/MM/DD">
+                      {updatedAt}
+                    </Moment>
                   </div>
-                  <Moment className="text-gray-300 text-xs" format="YYYY/MM/DD">
-                    {updatedAt}
-                  </Moment>
-                </div>
-                <h2 className="font-bold pb-[16px] border-b border-gray-200 truncate">{title}</h2>
-                <div className="flex mt-[8px]">
-                  {categorys.map((category) => {
-                    return (
-                      <Link key={category.id} href={`/tags/${category.id}`}>
-                        <div
-                          key={category.id}
-                          id={category.name}
-                          className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2 block"
-                        >
-                          {category.name}
-                        </div>
-                      </Link>
-                    )
-                  })}
-                </div>
-              </motion.a>
-            </Link>
-          )
-        })}
-      </motion.div>
+                  <h2 className="font-bold pb-[16px] border-b border-gray-200 truncate">{title}</h2>
+                  <div className="flex mt-[8px]">
+                    {categorys.map((category) => {
+                      return (
+                        <Link key={category.id} href={`/tags/${category.id}`}>
+                          <div
+                            key={category.id}
+                            id={category.name}
+                            className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2 block"
+                          >
+                            {category.name}
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </motion.a>
+              </Link>
+            )
+          })}
+        </motion.div>
+      </div>
     </>
   )
 }
