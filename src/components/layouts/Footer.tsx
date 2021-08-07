@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <FontAwesomeIcon icon={faGithub} size="lg" className="text-[#171515]" />
         </a>
       </div>
-      <p className="text-sm">© 2021 lapis</p>
+      <p className="text-sm">© 2021 LapiBlog</p>
     </footer>
   )
 }
