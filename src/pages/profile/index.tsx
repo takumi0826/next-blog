@@ -14,7 +14,7 @@ const Profile: NextPage<Props> = ({ skills }) => {
   return (
     <>
       <Head>
-        <title>Profile</title>
+        <title>プロフィール | ラピブログ</title>
       </Head>
       <div className="md:flex">
         <motion.div

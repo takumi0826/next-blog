@@ -1,5 +1,4 @@
 import 'assets/styles/globals.css'
-import 'tailwindcss/tailwind.css'
 import { Layout } from 'components/layouts'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Header, Footer } from 'components/layouts'

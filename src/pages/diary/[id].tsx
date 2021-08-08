@@ -12,7 +12,7 @@ const DiaryArticle: NextPage<Props> = ({ data }) => {
   return (
     <>
       <Head>
-        <title>{data.title}</title>
+        <title>{`${data.title} | ラピブログ`}</title>
       </Head>
       <div className="max-w-[600px] mx-auto">
         <PostTitle1 data={data} />

@@ -12,7 +12,7 @@ const Diary: NextPage<Props> = ({ diary }) => {
   return (
     <>
       <Head>
-        <title>diary</title>
+        <title>日記 | ラピブログ</title>
       </Head>
       <PostDiary diary={diary} />
     </>

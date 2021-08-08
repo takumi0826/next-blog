@@ -12,7 +12,7 @@ const Note: NextPage<Props> = ({ note }) => {
   return (
     <>
       <Head>
-        <title>Note</title>
+        <title>ノート | ラピブログ</title>
       </Head>
       <PostNote note={note} />
     </>

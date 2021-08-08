@@ -11,7 +11,7 @@ const DetailDiary: React.FC<Props> = (props) => {
   return (
     <>
       <div
-        className="prose prose-md"
+        className="prose prose-md prose-blue"
         dangerouslySetInnerHTML={{
           __html: props.data.body,
         }}
