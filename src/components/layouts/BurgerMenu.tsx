@@ -8,7 +8,7 @@ type NavProps = {
 type Props = {
   navs: NavProps[]
   open: boolean
-  toggle: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  toggle: () => void
 }
 
 const BurgerMenu: React.FC<Props> = (props) => {

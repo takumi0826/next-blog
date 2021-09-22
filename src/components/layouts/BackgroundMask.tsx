@@ -1,6 +1,6 @@
 type Props = {
   open: boolean
-  toggle: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  toggle: () => void
 }
 
 const BackgroundMask: React.FC<Props> = (props) => {
