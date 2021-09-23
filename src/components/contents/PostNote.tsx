@@ -23,7 +23,7 @@ const PostNote: React.FC<Props> = (props) => {
     if (!inView) {
       controls.start('hidden')
     }
-  }, [controls, inView])
+  }, [controls, inView, props.note])
   const container = {
     hidden: { opacity: 0, scale: 0 },
     visible: {

@@ -1,17 +1,11 @@
-import { useRouter } from 'next/dist/client/router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-const Search: React.FC = () => {
-  const router = useRouter()
-  const enterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!e.currentTarget.value.trim()) {
-      return
-    }
-    if (e.key === 'Enter') {
-      router.push(`/note?q=${e.currentTarget.value}`)
-    }
-  }
+type Props = {
+  enterPress: (e: React.KeyboardEvent<HTMLInputElement>) => void
+}
+
+const Search: React.FC<Props> = (props) => {
   return (
     <div className="text-center">
       <div className="relative inline-block">
@@ -19,7 +13,7 @@ const Search: React.FC = () => {
           type="text"
           className="outline-none border border-gray-100 rounded-full pl-4 pr-8 py-2 text-xs w-[240px]"
           maxLength={20}
-          onKeyPress={(e) => enterPress(e)}
+          onKeyPress={props.enterPress}
         />
         <FontAwesomeIcon
           icon={faSearch}
