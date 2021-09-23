@@ -14,30 +14,30 @@ const Note: NextPage<Props> = ({ note }) => {
 
   useEffect(() => {}, [data])
 
-  const onEnterPressFetchData = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!e.currentTarget.value.trim()) {
+  const onEnterPressFetchData = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      fetchData(e.currentTarget.value)
+    }
+  }
+  const onClickFetchData = (searchValue: string) => {
+    fetchData(searchValue)
+  }
+  const fetchData = (str: string) => {
+    if (!str.trim()) {
       return
     }
-    if (e.key === 'Enter') {
-      const encodeStr = encodeURI(e.currentTarget.value)
-      // const res = await client.get<ListResponse<NoteResponse>>({
-      //   endpoint: 'note',
-      //   queries: { q: encodeStr },
-      // })
-      // setData(res.contents)
-
-      fetch(`https://microblog.microcms.io/api/v1/note?q=${encodeStr}`, {
-        headers: {
-          'X-API-KEY': process.env.NEXT_PUBLIC_MICRO_CMS_API_KEY as string,
-        },
+    const encodeStr = encodeURI(str)
+    fetch(`https://microblog.microcms.io/api/v1/note?q=${encodeStr}`, {
+      headers: {
+        'X-API-KEY': process.env.NEXT_PUBLIC_MICRO_CMS_API_KEY as string,
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json)
+        setData(json.contents)
       })
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json)
-          setData(json.contents)
-        })
-        .catch((error) => console.error(error))
-    }
+      .catch((error) => console.error(error))
   }
 
   return (
@@ -45,7 +45,7 @@ const Note: NextPage<Props> = ({ note }) => {
       <Head>
         <title>ノート | ラピブログ</title>
       </Head>
-      <Search enterPress={onEnterPressFetchData} />
+      <Search enterPress={onEnterPressFetchData} click={onClickFetchData} />
       <div className="mt-[40px]">
         <PostNote note={data} />
       </div>
