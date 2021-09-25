@@ -83,7 +83,7 @@ const PostNote: React.FC<Props> = (props) => {
                           <div
                             key={category.id}
                             id={category.name}
-                            className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2 block"
+                            className="bg-primary-700 text-primary-100 rounded-full text-xs px-4 py-1 mr-2 block cursor-pointer hover:bg-gradient-to-tl from-blue-600 via-teal-500 to-purple-500"
                           >
                             {category.name}
                           </div>

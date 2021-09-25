@@ -18,7 +18,7 @@ const Search: React.FC<Props> = (props) => {
       <div className="relative inline-block">
         <input
           type="text"
-          className="outline-none border border-gray-100 rounded-full pl-4 pr-8 py-2 text-xs w-[240px]"
+          className="outline-none border border-gray-100 rounded-full pl-4 pr-8 py-2 sm:text-xs w-[240px]"
           maxLength={20}
           onChange={(e) => handleOnChange(e.currentTarget.value)}
           onKeyPress={props.enterPress}
