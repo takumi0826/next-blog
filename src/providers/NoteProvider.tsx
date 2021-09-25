@@ -1,17 +1,18 @@
-import { client } from 'lib/client'
-import { createContext } from 'react'
-import { ListResponse, NoteResponse } from 'types'
+import { createContext, useState, Dispatch, SetStateAction, ReactNode } from 'react'
+import { NoteResponse } from 'types'
 
-export const NoteContext = createContext({})
+type NoteContextType = {
+  note: NoteResponse[] | null
+  setNote: Dispatch<SetStateAction<NoteResponse[]>>
+}
 
-const res = client.get<ListResponse<NoteResponse>>({
-  endpoint: 'note',
-  queries: { orders: '-updatedAt' },
-})
+export const NoteContext = createContext({} as NoteContextType)
 
-const NoteProvider: React.FC = (props) => {
+const NoteProvider = (props: { children: ReactNode }) => {
   const { children } = props
-  return <NoteContext.Provider value={res}>{children}</NoteContext.Provider>
+  const [note, setNote] = useState<NoteResponse[]>([])
+
+  return <NoteContext.Provider value={{ note, setNote }}>{children}</NoteContext.Provider>
 }
 
 export default NoteProvider
