@@ -49,7 +49,10 @@ const Profile: NextPage<Props> = ({ skills }) => {
               <dl className="mt-[16px]">
                 <dt>経歴</dt>
                 <dd className="text-xs mt-[8px] leading-relaxed">
-                  Web制作会社で1年半コーダーとして働き、現在はバックエンドエンジニアとして業務システムを開発
+                  Web制作: 約1年半
+                  <br /> 業務システム開発: 約1年半
+                  <br />
+                  ハイブリッドアプリ開発: 約半年
                 </dd>
               </dl>
             </div>
